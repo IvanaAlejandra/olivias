@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Olivia - Seguimiento de Pedido</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --brown-dark: #6D4C41;
+      --brown: #8D6E63;
+      --beige: #F5F0EB;
+      --beige-light: #FFF8F0;
+      --accent: #B87B56;
+      --accent2: #d63384;
+      --accent2-dark: #c2185b;
+      --yellow: #ffc107;
+      --white: #fff;
+      --step-bg: #fff8e1;
+      --box-shadow: 0 5px 28px 0 rgba(141,110,99,0.08);
+    }
+    html, body {
+      background: var(--beige-light);
+      font-family: 'Quicksand', sans-serif;
+      min-height: 100vh;
+    }
+    /* NAV */
+    .navbar {
+      background: var(--beige);
+      box-shadow: 0 2px 12px 0 rgba(100,60,40,0.03);
+      border-bottom: 2.2px solid var(--beige-light);
+    }
+    .navbar-brand {
+      color: var(--brown-dark) !important;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      max-height: 46px;
+      margin-right: 10px;
+    }
+    .nav-link {
+      color: var(--brown-dark) !important;
+      font-weight: 600;
+      font-size: 1.12rem;
+    }
+    .nav-link.active, .nav-link:hover {
+      color: var(--accent2) !important;
+      background: var(--beige-light);
+      border-radius: 9px;
+    }
+    /* MAIN CONTAINER */
+    .seguimiento-container {
+      background: var(--white);
+      border-radius: 44px;
+      max-width: 1100px;
+      margin: 42px auto 0 auto;
+      box-shadow: var(--box-shadow);
+      padding: 36px 32px 32px 32px;
+      min-height: 590px;
+    }
+    .seguimiento-title {
+      color: var(--brown-dark);
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 2.55rem;
+      letter-spacing: 1.5px;
+      text-align: center;
+      margin-bottom: 32px;
+      text-shadow: 0 1px 0 #f1d4bc;
+    }
+    /* PASOS */
+    .pasos-seguimiento {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: 2.2rem;
+      position: relative;
+    }
+    .paso {
+      text-align: center;
+      flex: 1;
+      min-width: 170px;
+      position: relative;
+      z-index: 1;
+      margin: 0 6px;
+    }
+    .paso:not(:last-child)::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 52%;
+      left: 65%;
+      width: 70%;
+      height: 6px;
+      background: linear-gradient(90deg, #ab927b 30%, var(--accent) 100%);
+      border-radius: 4px;
+      z-index: -1;
+    }
+    .paso-icono {
+      width: 76px;
+      height: 76px;
+      background: var(--step-bg);
+      border-radius: 50%;
+      margin: 0 auto 10px auto;
+      border: 5px solid var(--brown-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.3rem;
+      color: var(--brown-dark);
+      transition: background 0.2s, border 0.2s;
+      box-shadow: 0 2px 11px 0 rgba(141,110,99,0.07);
+    }
+    .paso-completado .paso-icono {
+      background: var(--white);
+      border-color: var(--brown-dark);
+      color: var(--brown-dark);
+    }
+    .paso-activo .paso-icono {
+      background: var(--yellow);
+      border-color: var(--accent2-dark);
+      color: var(--accent2-dark);
+    }
+    .paso-titulo {
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-top: 3px;
+      color: var(--brown-dark);
+    }
+    .paso-activo .paso-titulo {
+      color: var(--accent2-dark);
+    }
+    .paso-fecha {
+      color: var(--brown);
+      margin-top: 6px;
+      font-size: 1.01rem;
+      font-weight: 500;
+    }
+    /* CARD DETALLES */
+    .card-detalles {
+      background: #fff9ee;
+      border-radius: 18px;
+      box-shadow: 0 2px 10px 0 rgba(141,110,99,0.06);
+      padding: 30px 24px;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      border: 2px solid #eed2ab;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .detalles-info {
+      flex: 2;
+      min-width: 240px;
+    }
+    .detalles-info h5 {
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 18px;
+    }
+    .detalles-info p {
+      font-size: 1.09rem;
+      color: var(--brown-dark);
+      margin-bottom: 5px;
+      line-height: 1.42;
+    }
+    .detalles-info span {
+      font-weight: 700;
+      color: var(--accent2-dark);
+    }
+    .detalles-ayuda {
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+    .btn-ayuda {
+      background: var(--accent2);
+      color: var(--white);
+      font-size: 1.17rem;
+      border-radius: 1.1rem;
+      font-weight: 700;
+      padding: 0.75rem 1.6rem;
+      border: none;
+      letter-spacing: 1.1px;
+      box-shadow: 0 2px 10px 0 rgba(182,123,86,0.09);
+      transition: background 0.16s;
+    }
+    .btn-ayuda:hover,
+    .btn-ayuda:focus {
+      background: var(--accent2-dark);
+      color: var(--white);
+    }
+    /* FOOTER */
+    footer {
+      background-color: var(--beige);
+      padding: 1.3rem 0 0.7rem 0;
+      color: var(--brown-dark);
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1.06rem;
+      border-top: 2px solid var(--beige-light);
+      margin-top: 36px;
+      text-align: center;
+    }
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .seguimiento-container { padding: 18px 2px 14px 2px; }
+    }
+    @media (max-width: 700px) {
+      .seguimiento-title { font-size: 1.18rem;}
+      .pasos-seguimiento { flex-direction: column; gap: 36px; }
+      .paso { margin-bottom: 16px; }
+      .card-detalles { flex-direction: column; align-items: stretch; padding: 13px 4px;}
+      .detalles-ayuda { margin-top: 21px; justify-content: flex-start;}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md">
+    <a class="navbar-brand" href="#"><img src="imagenes/logoPanaderia.png" alt="Logo" height="44"> Olivia</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Sucursales</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Tortas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Panadería</a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-shopping-cart"></span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-user"></span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- SEGUIMIENTO -->
+  <div class="seguimiento-container" aria-label="Seguimiento de Pedido">
+    <div class="seguimiento-title">SEGUIMIENTO DE PEDIDO</div>
+    <div class="pasos-seguimiento">
+      <div class="paso paso-completado">
+        <div class="paso-icono" aria-label="Recibido"><i class="fa fa-check"></i></div>
+        <div class="paso-titulo">RECIBIDO</div>
+        <div class="paso-fecha">10 abril, 2024</div>
+      </div>
+      <div class="paso paso-activo">
+        <div class="paso-icono" aria-label="En preparación"><i class="fa fa-birthday-cake"></i></div>
+        <div class="paso-titulo">EN PREPARACIÓN</div>
+        <div class="paso-fecha">12 abril, 2024</div>
+      </div>
+      <div class="paso">
+        <div class="paso-icono" aria-label="Enviado"><i class="fa fa-truck"></i></div>
+        <div class="paso-titulo">ENVIADO</div>
+        <div class="paso-fecha">12 abril, 2024</div>
+      </div>
+      <div class="paso">
+        <div class="paso-icono" aria-label="Entregado"><i class="fa fa-check-double"></i></div>
+        <div class="paso-titulo">ENTREGADO</div>
+        <div class="paso-fecha">12 abril, 2024</div>
+      </div>
+    </div>
+    <div class="card-detalles">
+      <div class="detalles-info">
+        <h5>Detalles del pedido</h5>
+        <p><span>Fecha del pedido:</span> 10/04/2024</p>
+        <p><span>Correo electrónico:</span> maria@example.com</p>
+        <p><span>Dirección:</span> Av. Concha y Toro 3663, Puente Alto</p>
+      </div>
+      <div class="detalles-ayuda">
+        <button class="btn-ayuda" onclick="window.location='mailto:ayuda@oliviapanaderia.cl'"><i class="fa fa-headset"></i> CONTACTAR AYUDA</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Olivia Pastelería & Panadería. Todos los derechos reservados.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

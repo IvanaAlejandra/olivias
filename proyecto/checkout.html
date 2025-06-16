@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Olivia - Checkout</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown-dark: #6D4C41;
+      --brown: #8D6E63;
+      --beige: #F5F0EB;
+      --beige-light: #FFF8F0;
+      --accent: #B87B56;
+      --accent2: #d63384;
+      --accent2-dark: #c2185b;
+      --yellow: #ffc107;
+      --white: #fff;
+    }
+    body {
+      background-color: var(--beige-light);
+      font-family: 'Quicksand', sans-serif;
+    }
+    .container {
+      max-width: 900px;
+    }
+    /* Logo */
+    .logo-olivia {
+      display: block;
+      margin: 0 auto 10px auto;
+      max-height: 100px;
+    }
+    h2 {
+      color: var(--brown-dark);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    /* Secciones */
+    .seccion {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 32px 28px 22px 28px;
+      margin-bottom: 34px;
+      box-shadow: 0 6px 26px 0 rgba(141,110,99,0.08);
+      border: 1.8px solid var(--beige);
+    }
+    .seccion h4 {
+      font-weight: 700;
+      color: var(--brown-dark);
+      background: none;
+      border-bottom: 2px solid var(--yellow);
+      padding-bottom: 10px;
+      margin-bottom: 22px;
+      letter-spacing: 1px;
+      font-size: 1.34rem;
+    }
+    .seccion h4 span {
+      font-size: 1.1em;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    label {
+      color: var(--brown);
+      font-weight: 500;
+    }
+    .form-control:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 0.12rem rgba(182,123,86,0.13);
+    }
+    .btn-primary {
+      background-color: var(--accent2);
+      border: none;
+      font-weight: 700;
+      font-size: 1.13rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 10px 0 rgba(100,60,40,0.09);
+      transition: background 0.22s;
+      letter-spacing: 1.3px;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: var(--accent2-dark);
+      color: var(--white);
+    }
+    /* Botones radio custom */
+    .btn-outline-secondary, .btn-outline-success {
+      font-weight: 600;
+      border-radius: 1.2rem;
+      border-width: 2px;
+      font-size: 1.03rem;
+      letter-spacing: .2px;
+      padding: 0.44rem 1.4rem;
+      margin-right: 10px;
+    }
+    .btn-outline-secondary.active,
+    .btn-outline-secondary:active,
+    .btn-outline-secondary:focus {
+      background-color: var(--accent2);
+      color: var(--white) !important;
+      border-color: var(--accent2);
+    }
+    .btn-outline-success.active,
+    .btn-outline-success:active,
+    .btn-outline-success:focus {
+      background-color: var(--brown-dark);
+      color: var(--white) !important;
+      border-color: var(--brown-dark);
+    }
+    /* List group resumen */
+    .list-group-item {
+      font-size: 1.07rem;
+      border: none;
+      border-bottom: 1px solid var(--beige);
+      color: var(--brown-dark);
+    }
+    .list-group-item:last-child {
+      border-bottom: none;
+    }
+    .list-group-item strong {
+      color: var(--brown-dark);
+    }
+    /* Mapa */
+    iframe {
+      border-radius: 10px;
+      border: 1.5px solid var(--beige);
+    }
+    /* Checkbox terms */
+    .form-check-input:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 0.13rem rgba(214,51,132,0.08);
+    }
+    /* Botón confirmar */
+    .btn-confirm {
+      background: linear-gradient(90deg, var(--accent2), var(--accent2-dark));
+      color: var(--white);
+      font-weight: 700;
+      border: none;
+      border-radius: 1.7rem;
+      font-size: 1.25rem;
+      margin-top: 24px;
+      letter-spacing: 1.6px;
+      padding: 1.08rem 0;
+      box-shadow: 0 3px 18px 0 rgba(214,51,132,0.09);
+      transition: background 0.21s;
+    }
+    .btn-confirm:hover, .btn-confirm:focus {
+      background: var(--brown-dark);
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      .container { padding: 0 5px; }
+      .seccion { padding: 19px 5px 15px 5px; }
+      .logo-olivia { max-height: 66px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <img src="imagenes/logoPanaderia.png" alt="Logo Olivia" class="logo-olivia">
+    <h2 class="text-center mb-5">Proceso de Compra - Olivia Pastelería</h2>
+
+    <!-- Sección 1: Datos del cliente -->
+    <div class="seccion">
+      <h4><span>👤</span>Ingresa tus datos</h4>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Nombre *</label>
+            <input type="text" class="form-control" required />
+          </div>
+          <div class="form-group col-md-6">
+            <label>Apellido *</label>
+            <input type="text" class="form-control" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Correo / RUT</label>
+            <input type="text" class="form-control" placeholder="ej: nombre@correo.cl" />
+          </div>
+          <div class="form-group col-md-6">
+            <label>Teléfono</label>
+            <input type="tel" class="form-control" placeholder="+569..." />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Sección 2: Tipo de documento -->
+    <div class="seccion">
+      <h4><span>📄</span>Tipo de comprobante</h4>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-outline-secondary active">
+          <input type="radio" name="comprobante" checked> Boleta
+        </label>
+        <label class="btn btn-outline-secondary">
+          <input type="radio" name="comprobante"> Factura
+        </label>
+      </div>
+    </div>
+
+    <!-- Sección 3: Método de entrega -->
+    <div class="seccion">
+      <h4><span>🚚</span>Método de entrega</h4>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-outline-success active">
+          <input type="radio" name="entrega" checked> Retiro local
+        </label>
+        <label class="btn btn-outline-success">
+          <input type="radio" name="entrega"> Delivery
+        </label>
+      </div>
+    </div>
+
+    <!-- Sección 4: Método de pago -->
+    <div class="seccion">
+      <h4><span>💳</span>Método de pago</h4>
+      <div class="form-group">
+        <label>Selecciona un método:</label><br />
+        <img src="imagenes/webpay.png" alt="Webpay" width="90" style="background:#fff;border-radius:6px;margin-right:10px;">
+        <img src="imagenes/bancochile.png" alt="Banco Chile" width="90" style="background:#fff;border-radius:6px;margin-right:10px;">
+        <img src="imagenes/bancoestado.jpeg" alt="Banco Estado" width="90" style="background:#fff;border-radius:6px;">
+      </div>
+      <div class="form-check mt-3">
+        <input type="checkbox" class="form-check-input" id="terms">
+        <label class="form-check-label" for="terms" style="font-size: 1.01rem;">Acepto los <a href="#">términos y condiciones</a></label>
+      </div>
+    </div>
+
+    <!-- Sección 5: Resumen del pedido -->
+    <div class="seccion">
+      <h4><span>🧾</span>Resumen del pedido</h4>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span><strong>Producto:</strong> Torta Ben 10</span>
+          <img src="imagenes/TORTA-GOKU-FUNKO1.png" alt="Torta" width="90" style="border-radius:10px;">
+        </li>
+        <li class="list-group-item">Personas: 20</li>
+        <li class="list-group-item">Relleno Extra: No</li>
+        <li class="list-group-item">Dedicatoria: Feliz cumpleaños Pedro Pato</li>
+        <li class="list-group-item">Delivery: $0</li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <strong>Total</strong>
+          <strong>$45.000</strong>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Sección 6: Sucursal -->
+    <div class="seccion">
+      <h4><span>📍</span>Sucursal</h4>
+      <p style="margin-bottom:12px;">
+        Calle Los Aromos 1584<br />
+        Comuna de Ñuñoa, Santiago<br />
+        Región Metropolitana, Chile
+      </p>
+      <iframe src="https://maps.google.com/maps?q=Los%20Aromos%201584,%20Ñuñoa&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="220" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <button class="btn btn-primary btn-lg btn-block" onclick="window.location='seguimiento.html'">CONFIRMAR PEDIDO</button>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

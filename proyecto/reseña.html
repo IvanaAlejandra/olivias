@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuéntanos tu experiencia</title>
+    <!-- Íconos Bootstrap (para redes sociales y estrellas) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            /* Paleta armónica */
+            --chocolate: #6D4C41;
+            --marron: #A47551;
+            --crema: #FFF8F0;
+            --amarillo: #FFE6A7;
+            --beige: #F5E8D7;
+            --blanco: #FFFFFF;
+            --rosado: #F4D9CC;
+            --amarillo-estrella: #FFC107;
+        }
+        body {
+            background: var(--beige);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .feedback-main {
+            background: var(--crema);
+            border-radius: 32px;
+            margin: 40px auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 32px #0002;
+            padding: 0;
+            overflow: hidden;
+        }
+        .feedback-header {
+            background: var(--amarillo);
+            padding: 36px 44px 16px 44px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .fh-left {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
+        .fh-icon-star {
+            font-size: 3.4rem;
+            background: var(--crema);
+            border-radius: 50%;
+            border: 2.5px solid var(--marron);
+            color: var(--marron);
+            padding: 18px 21px;
+        }
+        .fh-titles {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .fh-title {
+            font-size: 2.7rem;
+            font-weight: bold;
+            color: var(--chocolate);
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        .fh-desc {
+            font-size: 1.13rem;
+            margin-top: 9px;
+            color: var(--chocolate);
+        }
+        .fh-arrow-back {
+            font-size: 2.5rem;
+            color: var(--chocolate);
+            cursor: pointer;
+            background: none;
+            border: none;
+            margin-top: 6px;
+            transition: color 0.2s;
+        }
+        .fh-arrow-back:hover { color: var(--marron);}
+        .feedback-body {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 38px 36px 34px 36px;
+        }
+        .feedback-left {
+            flex: 1.5;
+            min-width: 330px;
+            max-width: 650px;
+        }
+        .feedback-right {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 12px;
+        }
+        .frow {
+            display: flex;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+        .flabel {
+            font-size: 1.25rem;
+            color: var(--chocolate);
+            font-weight: 600;
+            min-width: 160px;
+            margin-right: 10px;
+        }
+        .fmini {
+            font-size: 1rem;
+            color: var(--marron);
+            margin: 0 8px 0 3px;
+            min-width: 68px;
+            text-align: right;
+        }
+        .fstars {
+            display: flex;
+            align-items: center;
+            margin: 0 18px;
+        }
+        .fstar {
+            font-size: 2.2rem;
+            color: var(--amarillo-estrella);
+            cursor: pointer;
+            transition: transform .13s;
+        }
+        .fstar.inactive { color: #e0e0e0; }
+        .fstar:hover, .fstar.hovered { transform: scale(1.13); color: #FFB300; }
+        .feedback-coment {
+            margin-top: 14px;
+            margin-bottom: 27px;
+        }
+        .feedback-coment textarea {
+            width: 100%;
+            font-size: 1.15rem;
+            border-radius: 8px;
+            padding: 9px 15px;
+            border: 1.7px solid var(--marron);
+            outline: none;
+            resize: none;
+            background: var(--blanco);
+            color: var(--chocolate);
+            transition: border-color 0.2s;
+        }
+        .feedback-coment textarea:focus {
+            border-color: var(--chocolate);
+        }
+        .btn-feedback-send {
+            background: var(--chocolate);
+            color: var(--blanco);
+            font-size: 1.42rem;
+            font-weight: bold;
+            border-radius: 14px;
+            padding: 0.82rem 0;
+            width: 320px;
+            letter-spacing: 1px;
+            border: none;
+            margin-top: 22px;
+            transition: background .2s;
+        }
+        .btn-feedback-send:hover {
+            background: var(--marron);
+        }
+        /* Columna derecha */
+        .fright-title {
+            font-size: 1.31rem;
+            font-weight: bold;
+            color: var(--chocolate);
+            margin-bottom: 2px;
+            margin-top: 8px;
+        }
+        .fright-sub {
+            font-size: 1rem;
+            color: var(--marron);
+            margin-bottom: 13px;
+        }
+        .fright-socials {
+            display: flex;
+            gap: 22px;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            justify-content: center;
+        }
+        .fright-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            font-size: 2.1rem;
+            border-radius: 50%;
+            background: var(--blanco);
+            box-shadow: 0 2px 14px #0001;
+            transition: box-shadow .2s, background .2s;
+        }
+        .fright-socials a:hover {
+            background: var(--amarillo);
+            box-shadow: 0 4px 18px #e8ba6a45;
+        }
+        .fright-socials .ig { color: #E4405F; }
+        .fright-socials .fb { color: #1877F3; }
+        .fright-socials .tw { color: #111; }
+        .fright-invita {
+            margin-top: 16px;
+        }
+        .fright-invita img {
+            width: 110px;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        /* Footer minimalista */
+        .footer {
+            text-align: center;
+            color: var(--chocolate);
+            font-size: 1rem;
+            margin-top: 28px;
+            padding-bottom: 18px;
+            opacity: 0.90;
+            letter-spacing: .01em;
+        }
+        @media (max-width: 950px) {
+            .feedback-body { flex-direction: column; padding: 18px 10px 30px 10px; }
+            .feedback-header { padding: 17px 11px 7px 14px;}
+            .feedback-main { margin: 12px; }
+            .feedback-left { max-width: none;}
+            .btn-feedback-send { width: 98%; }
+        }
+        @media (max-width: 700px) {
+            .fh-title { font-size: 1.15rem; }
+            .fh-desc { font-size: .93rem;}
+            .fh-icon-star { font-size: 2rem; padding: 8px 10px; }
+            .feedback-header { padding: 11px 5px 5px 8px;}
+            .feedback-main { margin: 2px; }
+            .feedback-body { padding: 6px 2px 13px 2px; }
+            .flabel { min-width: 66px; font-size: 1rem;}
+            .btn-feedback-send { width: 97%; font-size: 1.09rem;}
+            .fright-title { font-size: 1.11rem;}
+            .fright-socials a { width: 38px; height: 38px; font-size: 1.18rem;}
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-main">
+        <!-- Header con estrella y título -->
+        <div class="feedback-header">
+            <div class="fh-left">
+                <span class="fh-icon-star"><i class="bi bi-star"></i></span>
+                <div class="fh-titles">
+                    <div class="fh-title">CUÉNTANOS TU EXPERIENCIA</div>
+                    <div class="fh-desc">Tu opinión nos ayuda a mejorar ¡Compártela!</div>
+                </div>
+            </div>
+            <button class="fh-arrow-back" onclick="window.history.back()" title="Volver">
+                <i class="bi bi-arrow-return-left"></i>
+            </button>
+        </div>
+        <div class="feedback-body">
+            <!-- Columna izquierda: formulario de reseña -->
+            <div class="feedback-left">
+                <form autocomplete="off">
+                    <div class="frow">
+                        <div class="flabel">Calidad del producto</div>
+                        <span class="fmini">Muy malo</span>
+                        <div class="fstars" data-target="calidad">
+                            <span class="fstar" data-value="1">&#9733;</span>
+                            <span class="fstar" data-value="2">&#9733;</span>
+                            <span class="fstar" data-value="3">&#9733;</span>
+                            <span class="fstar" data-value="4">&#9733;</span>
+                            <span class="fstar" data-value="5">&#9733;</span>
+                        </div>
+                        <span class="fmini">Muy bueno</span>
+                    </div>
+                    <div class="frow">
+                        <div class="flabel">Facilidad de pago</div>
+                        <span class="fmini">Muy malo</span>
+                        <div class="fstars" data-target="pago">
+                            <span class="fstar" data-value="1">&#9733;</span>
+                            <span class="fstar" data-value="2">&#9733;</span>
+                            <span class="fstar" data-value="3">&#9733;</span>
+                            <span class="fstar" data-value="4">&#9733;</span>
+                            <span class="fstar" data-value="5">&#9733;</span>
+                        </div>
+                        <span class="fmini">Muy bueno</span>
+                    </div>
+                    <div class="frow">
+                        <div class="flabel">Atención</div>
+                        <span class="fmini">Muy malo</span>
+                        <div class="fstars" data-target="atencion">
+                            <span class="fstar" data-value="1">&#9733;</span>
+                            <span class="fstar" data-value="2">&#9733;</span>
+                            <span class="fstar" data-value="3">&#9733;</span>
+                            <span class="fstar" data-value="4">&#9733;</span>
+                            <span class="fstar" data-value="5">&#9733;</span>
+                        </div>
+                        <span class="fmini">Muy bueno</span>
+                    </div>
+                    <div class="feedback-coment">
+                        <textarea rows="3" placeholder="Cuéntanos más..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-feedback-send">Enviar opinión</button>
+                </form>
+            </div>
+            <!-- Columna derecha: redes y compartir -->
+            <div class="feedback-right">
+                <div class="fright-title">Síguenos y comparte</div>
+                <div class="fright-sub">Invita a tus amigos a probarnos</div>
+                <div class="fright-socials">
+                    <a href="#" class="ig" title="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="fb" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="tw" title="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+                </div>
+                <div class="fright-invita">
+                    <img src="imagenes/barra.webp" alt="Invita a tus amigos" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer minimalista -->
+   <div class="footer">
+        <div class="footer-logo">PASTELERÍA SALUDABLE</div>
+        <p>Dulces momentos desde 1995</p>
+        
+        <div class="footer-links">
+            <a href="#" class="footer-link"><i class="fas fa-phone"></i> Contáctanos</a>
+            <a href="#" class="footer-link"><i class="fas fa-info-circle"></i> Sobre nosotros</a>
+            <a href="#" class="footer-link"><i class="fas fa-box"></i> Términos y condiciones</a>
+            <a href="#" class="footer-link"><i class="fas fa-shield-alt"></i> Política de privacidad</a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2023 Pastelería Saludable. Todos los derechos reservados.</p>
+            <p>Horario de atención: Lunes a Sábado 8:00 AM - 8:00 PM</p>
+        </div>
+    </div>
+    <!-- Interactividad de estrellas -->
+    <script>
+        // Maneja selección y hover de estrellas de puntaje
+        document.querySelectorAll('.fstars').forEach(function(starGroup) {
+            const stars = starGroup.querySelectorAll('.fstar');
+            let rating = 0;
+            stars.forEach(function(star, idx) {
+                // Hover de estrellas
+                star.addEventListener('mouseenter', function() {
+                    stars.forEach((s, i) => s.classList.toggle('hovered', i <= idx));
+                });
+                // Quitar hover al salir
+                starGroup.addEventListener('mouseleave', function() {
+                    stars.forEach((s, i) => s.classList.remove('hovered'));
+                });
+                // Click para puntuar
+                star.addEventListener('click', function() {
+                    rating = idx + 1;
+                    stars.forEach((s, i) => {
+                        s.classList.toggle('inactive', i >= rating);
+                        s.classList.remove('hovered');
+                    });
+                    starGroup.setAttribute('data-rating', rating);
+                });
+            });
+        });
+        // Demo de envío (puedes cambiarlo por la lógica real)
+        document.querySelector('form').addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('¡Gracias por tu opinión!');
+        });
+    </script>
+</body>
+</html>

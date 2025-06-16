@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Olivia Pastelería &amp; Panadería</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
+  <style>
+:root {
+  --brown-dark: #6D4C41;
+  --brown: #8D6E63;
+  --beige: #F5F0EB;
+  --beige-light: #FFF8F0;
+  --beige-strong: #E8E0D9;
+  --accent: #B87B56;   /* Marrón cálido para botones */
+  --accent-light: #DDC3B3; /* Acento suave para hovers */
+  --white: #fff;
+}
+
+/* Header y menú */
+.navbar {
+  background: linear-gradient(to right, var(--beige), var(--brown-dark));
+  box-shadow: 0 2px 12px 0 rgba(100,60,40,0.05);
+}
+.navbar-brand {
+  font-weight: bold;
+  color: var(--brown-dark) !important;
+  letter-spacing: 1px;
+  font-size: 1.38rem;
+  text-shadow: none;
+}
+.nav-link {
+  font-weight: bold;
+  color: var(--white) !important;
+  letter-spacing: 1px;
+  font-size: 1.18rem;
+}
+.nav-link.active, .nav-link:focus, .nav-link:hover {
+  color: var(--brown-dark) !important;
+  background: var(--accent-light);
+  border-radius: 12px;
+}
+
+/* Banner principal ajustado */
+.carousel-item {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.carousel-inner img {
+  object-fit: cover;
+  height: 420px;
+  width: 100%;
+  filter: brightness(0.9) contrast(1.04);
+}
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 60vw;
+  width: 70vw;
+  max-width: 1100px;
+  padding: 2.7rem 2.5rem 2rem 2.5rem;
+  background: rgba(245, 240, 235, 0.92);
+  border-radius: 30px;
+  box-shadow: 0 3px 24px 0 rgba(141,110,99,0.13);
+  color: #6D4C41;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-caption h1,
+.carousel-caption h2 {
+  font-size: 2.4rem;
+  color: #6D4C41;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.carousel-caption p {
+  color: #8D6E63;
+  font-size: 1.18rem;
+  margin-bottom: 1.6rem;
+}
+
+/* Botones */
+.btn-primary {
+  background-color: var(--accent);
+  border: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.7rem 2rem;
+  border-radius: 1.4rem;
+  box-shadow: 0 2px 8px 0 rgba(100,60,40,0.08);
+  transition: background 0.2s;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--brown-dark);
+  color: var(--white);
+}
+.btn-secondary {
+  background-color: var(--brown);
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+  border-radius: 1.2rem;
+  padding: 0.5rem 1.4rem;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+/* Cards sección productos */
+.card {
+  border-radius: 18px;
+  border: none;
+  background: var(--beige);
+  box-shadow: 0 3px 18px 0 rgba(141,110,99,0.09);
+}
+.card h2 {
+  color: var(--brown-dark);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+.card p {
+  color: var(--brown);
+  font-size: 1.12rem;
+}
+.rounded-circle {
+  border: 3px solid var(--accent-light);
+  box-shadow: 0 2px 8px 0 rgba(141,110,99,0.08);
+  background: var(--white);
+  object-fit: cover;
+}
+
+/* Fondo general */
+body {
+  background-color: var(--beige-light);
+
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Footer */
+footer {
+  background-color: var(--beige-strong);
+  padding: 1.7rem 0 0.8rem 0;
+  color: var(--brown-dark);
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.04rem;
+  border-top: 2px solid var(--beige);
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .carousel-inner img,
+  .carousel-item {
+    height: 200px;
+    min-height: 200px;
+  }
+  .carousel-caption {
+    width: 95vw;
+    min-width: unset;
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+    font-size: 1rem;
+  }
+  .card h2 {
+    font-size: 1.23rem;
+  }
+}
+@media (max-width: 600px) {
+  .carousel-inner img,
+  .carousel-item {
+    height: 120px;
+    min-height: 120px;
+  }
+  .carousel-caption h1 {
+    font-size: 1.1rem;
+  }
+  .carousel-caption {
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Olivia Pastelería &amp; Panadería</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="#">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Tortas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main role="main">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <!-- Primera imagen del banner -->
+          <img class="d-block w-100" src="https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/04/10095738/iStock-475263838.jpg" alt="Torta de frutilla"/>
+          <div class="carousel-caption">
+            <h1>¡Bienvenido a Olivia Pastelería &amp; Panadería!</h1>
+            <p>Endulzamos tus días con amor y sabor.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Haz tu pedido</a></p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <!-- Segunda imagen del banner -->
+          <img class="d-block w-100" src="https://elolivar.es/olivar-content/uploads/2024/08/celebracion-cumpleanos.png" alt="Cupcakes variados"/>
+          <div class="carousel-caption">
+            <h1>Nuestros Cupcakes</h1>
+            <p>Perfectos para cualquier ocasión especial.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Ver más</a></p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Siguiente</span>
+      </a>
+    </div>
+
+    <!-- Cards de productos -->
+    <div class="container marketing text-center mt-5">
+      <div class="row">
+        <div class="col-12 mb-4">
+          <div class="card p-4 shadow-sm">
+            <div class="row align-items-center">
+              <div class="col-md-3">
+                <img class="rounded-circle" src="imagenes/cupcakeintegral.jpg" alt="Cupcake" width="140" height="140">
+              </div>
+              <div class="col-md-9 text-md-left">
+                <h2>Cupcakes</h2>
+                <p>Coloridos, deliciosos y personalizados a tu gusto.</p>
+                <a class="btn btn-secondary" href="#">Ver cupcakes &raquo;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-4">
+          <div class="card p-4 shadow-sm">
+            <div class="row align-items-center">
+              <div class="col-md-3">
+                <img class="rounded-circle" src="imagenes/torta.jpeg" alt="Torta" width="140" height="140">
+              </div>
+              <div class="col-md-9 text-md-left">
+                <h2>Tortas</h2>
+                <p>De cumpleaños, bodas o antojo. Tenemos la ideal para ti.</p>
+                <a class="btn btn-secondary" href="#">Ver tortas &raquo;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-4">
+          <div class="card p-4 shadow-sm">
+            <div class="row align-items-center">
+              <div class="col-md-3">
+                <img class="rounded-circle" src="imagenes/croissanty.jpeg" alt="Postres" width="140" height="140">
+              </div>
+              <div class="col-md-9 text-md-left">
+                <h2>Postres</h2>
+                <p>Mousse, brownies y más. Cada bocado es una experiencia.</p>
+                <a class="btn btn-secondary" href="#">Ver postres &raquo;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center">
+      <p>&copy; 2025 Olivia Pastelería &amp; Panadería. Todos los derechos reservados.</p>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
